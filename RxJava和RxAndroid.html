@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RxJava和RxAndroid</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="./js/ztree_toc.js"></script>
+	<SCRIPT type="text/javascript" >
+	<!--
+	$(document).ready(function(){
+		$('#tree').ztree_toc({
+
+		});
+	});
+	//-->
+	</SCRIPT>
+
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}=============================================================================*/
+
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+
+<TABLE border=0 height=600px align=left>
+	<TR>
+		<TD width=60px align=left valign=top style="BORDER-RIGHT: #999999 1px dashed">
+			<ul id="tree" class="ztree">
+				
+			</ul>
+		</TD>
+		<TD width=770px align=left valign=top>
+
+<h1>RxJava、RxAndroid</h1>
+<h2>介绍</h2>
+<p><strong>a library for composing asynchronous and event-based programs using observable sequences for the Java VM -------一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库</strong></p>
+<h2>使用</h2>
+<h3>1、关联</h3>
+<pre><code>compile 'io.reactivex:rxjava:1.0.14'
+compile 'io.reactivex:rxandroid:1.0.1'
+</code></pre>
+
+<h3>2、简单示例</h3>
+<pre><code>public void test01(){
+
+        Log.e(tag,&quot;------------test01-----------&quot; +
+                &quot;\n----------简单实例01---------&quot;);
+
+        //创建被观察者
+        Observable&lt;String&gt; observable = Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+            @Override
+            public void call(Subscriber&lt;? super String&gt; subscriber) {
+                //调用观察者的回调
+                subscriber.onNext(&quot;我是&quot;);
+                subscriber.onNext(&quot;RxJava&quot;);
+                subscriber.onNext(&quot;简单示例&quot;);
+                subscriber.onError(new Throwable(&quot;出错了&quot;));
+                subscriber.onCompleted();
+            }
+        });
+
+        //创建观察者
+        Observer&lt;String&gt; observer = new Observer&lt;String&gt;() {
+            @Override
+            public void onCompleted() {
+                Log.e(tag,&quot;onCompleted&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(tag,e.getMessage());
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.e(tag,s);
+            }
+        };
+
+        //注册，是的观察者和被观察者关联，将会触发OnSubscribe.call方法
+        observable.subscribe(observer);
+    }
+</code></pre>
+
+<p><strong>运行结果：</strong></p>
+<pre><code>    =====&gt;: ------------test01-----------
+            ----------简单实例01---------
+    =====&gt;: 我是
+    =====&gt;: RxJava
+    =====&gt;: 简单示例
+    =====&gt;: 出错了
+</code></pre>
+
+<blockquote>
+<p>Observable是被观察者，通过create创建（还有其他方式，后面将会讲到），传入一个OnSubscribe对象，当Observable调用subscribe进行注册观察者时，OnSubscribe的call方法会触发。Observer是观察者，他有三个回调方法：</p>
+</blockquote>
+<pre><code>onNext      ：接受到一个事件
+onCompleted ：接受完事件后调用，只会调用一次
+onError     ：发生错误时调用，并停止接受事件，调用一次
+</code></pre>
+
+<blockquote>
+<p><code>onCompleted</code>和<code>onError</code>不会同时调用，只会调用其中之一</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>观察者除了使用<code>Observer</code>，还可以使用<code>Subscriber</code>，它跟 <code>Observer</code>作用一样，如下：</p>
+</blockquote>
+<pre><code>public void test02(){
+        Log.e(tag,&quot;------------test02-----------&quot; +
+                &quot;\n----------简单实例02---------&quot;);
+
+        //创建被观察者
+        Observable&lt;String&gt; observable = Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+            @Override
+            public void call(Subscriber&lt;? super String&gt; subscriber) {
+                //调用观察者的回调
+                subscriber.onNext(&quot;我是&quot;);
+                subscriber.onNext(&quot;RxJava&quot;);
+                subscriber.onNext(&quot;简单示例&quot;);
+                subscriber.onCompleted();
+                subscriber.onError(new Throwable(&quot;出错了&quot;));
+            }
+        });
+
+        //创建观察者
+        Subscriber&lt;String&gt; subscriber = new Subscriber&lt;String&gt;() {
+            @Override
+            public void onStart() {
+                Log.e(tag,&quot;onStart&quot;);
+            }
+
+            @Override
+            public void onCompleted() {
+                Log.e(tag,&quot;onCompleted&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(tag,e.getMessage());
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.e(tag,s);
+            }
+        };
+        //注册，使得观察者和被观察者关联，将会触发OnSubscribe.call方法
+        observable.subscribe(subscriber);
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test02-----------
+        ----------简单实例02---------
+=====&gt;: onStart
+=====&gt;: 我是
+=====&gt;: RxJava
+=====&gt;: 简单示例
+=====&gt;: onCompleted
+</code></pre>
+
+<blockquote>
+<p>这里只是多了一个<code>onStar</code>t方法 ，这个方法会在<code>Observable</code>调用方法<code>subscribe</code>注册观察者时调用一次，表明事件要开始了。</p>
+</blockquote>
+<p><strong>因为<code>Subscriber</code>只是对<code>Observer</code>的扩展，用法都一样，所以后面例子都用 <code>Subscriber</code>做观察者。</strong></p>
+<hr />
+<h3>3、Observable的创建</h3>
+<blockquote>
+<p>前面简单的例子中，创建Observable是通过create方法，当然还有其他方法，体验一下吧：</p>
+</blockquote>
+<pre><code>public void test03(){
+        Log.e(tag,&quot;------------test03-----------&quot; +
+                &quot;\n----------创建观察者01---------&quot;);
+
+        Integer[] ints={1,2,3,4};
+
+        Observable.from(ints).subscribe(new Subscriber&lt;Integer&gt;() {
+            @Override
+            public void onCompleted() {
+                Log.e(tag,&quot;onCompleted&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(tag,e.getMessage());
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.e(tag,integer+&quot;&quot;);
+            }
+        });
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test03-----------
+        ----------创建观察者01---------
+=====&gt;: 1
+=====&gt;: 2
+=====&gt;: 3
+=====&gt;: 4
+=====&gt;: onCompleted
+</code></pre>
+
+<blockquote>
+<p><code>from</code>方法将传入的数组或 Iterable 拆分成具体对象后，依次发送出来。</p>
+</blockquote>
+<hr />
+<pre><code>public void test04(){
+        Log.e(tag,&quot;------------test04-----------&quot; +
+                &quot;\n----------创建被观察者02---------&quot;);
+        Observable.just(1,2,3,4).subscribe(new Subscriber&lt;Integer&gt;() {
+            @Override
+            public void onCompleted() {
+                Log.e(tag,&quot;onCompleted&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(tag,e.getMessage());
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.e(tag,integer+&quot;&quot;);
+            }
+        });
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test04-----------
+        ----------创建被观察者02---------
+=====&gt;: 1
+=====&gt;: 2
+=====&gt;: 3
+=====&gt;: 4
+=====&gt;: onCompleted
+</code></pre>
+
+<blockquote>
+<p>和from方法一样，just(T...): 将传入的参数依次发送出来。</p>
+</blockquote>
+<h3>4、观察者的其他可用形式</h3>
+<blockquote>
+<p>观察者Subscriber和Observer都需要写三个回调，有时候我们只关系其中一个回调，或者两个</p>
+</blockquote>
+<pre><code>public void test05(){
+        Log.e(tag,&quot;------------test05-----------&quot; +
+                &quot;\n----------创建观察者其他形式---------&quot;);
+
+        String[] strs={&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;};
+        Action1&lt;String&gt; onNextAction = new Action1&lt;String&gt;() {
+            // onNext()
+            @Override
+            public void call(String s) {
+                Log.d(tag, s);
+            }
+        };
+        Action1&lt;Throwable&gt; onErrorAction = new Action1&lt;Throwable&gt;() {
+            // onError()
+            @Override
+            public void call(Throwable throwable) {
+               Log.e(tag,throwable.getMessage());
+            }
+        };
+        Action0 onCompletedAction = new Action0() {
+            // onCompleted()
+            @Override
+            public void call() {
+                Log.d(tag, &quot;completed&quot;);
+            }
+        };
+
+        Observable&lt;String&gt; observable = Observable.from(strs);
+        // 自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()
+        observable.subscribe(onNextAction);
+        // 自动创建 Subscriber ，并使用 onNextAction 和 onErrorAction 来定义 onNext() 和 onError()
+        observable.subscribe(onNextAction, onErrorAction);
+       // 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
+        observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
+
+    }
+</code></pre>
+
+<blockquote>
+<p>这里使用了Action1和Action0, Action0 是 RxJava 的一个接口，它只有一个方法 call()，这个方法是无参无返回值的；由于 onCompleted() 方法也是无参无返回值的，因此 Action0 可以被当成一个包装对象，将 onCompleted() 的内容打包起来将自己作为一个参数传入 subscribe() 以实现不完整定义的回调。 Action1 也是一个接口，它同样只有一个方法 call(T param)，这个方法也无返回值，但有一个参数；与 Action0 同理，由于 onNext(T obj) 和 onError(Throwable error) 也是单参数无返回值的，因此 Action1 可以将 onNext(obj) 和 onError(error) 打包起来传入 subscribe() 以实现不完整定义的回调。事实上，虽然 Action0 和 Action1 在 API 中使用最广泛，但 RxJava 是提供了多个 ActionX 形式的接口 (例如 Action2, Action3) 的，它们可以被用以包装不同的无返回值的方法。</p>
+</blockquote>
+<hr />
+<h3>5、线程调度</h3>
+<blockquote>
+<p>RxJava遵循线程不变原则，在不做特殊处理的情况下，在哪个线程调用 subscribe()，就在哪个线程生产事件；在哪个线程生产事件，就在哪个线程消费事件。如果需要切换线程，就需要用到 Scheduler （调度器）</p>
+</blockquote>
+<pre><code>    public void test06(){
+        Log.e(tag, &quot;------------test06-----------&quot; +
+                &quot;\n----------线程调度---------&quot;);
+        //从网络上根据用户id，请求对应用户，并显示用户积分到界面
+        Observable.create(new Observable.OnSubscribe&lt;Integer&gt;() {
+            @Override
+            public void call(Subscriber&lt;? super Integer&gt; subscriber) {
+                int id=111;
+                UserInfo userinfo=getUserInfoFromNet(id);
+                subscriber.onNext(userinfo.points);
+            }
+        }).subscribeOn(Schedulers.io())//事件产生在io线程
+           .observeOn(AndroidSchedulers.mainThread())//消耗事件在主线程
+           .subscribe(new Action1&lt;Integer&gt;() {
+               @Override
+               public void call(Integer points) {
+                   Log.e(tag, &quot;显示用户积分：&quot; + points);
+               }
+           });
+    }
+    //模拟从网络请求
+    private UserInfo getUserInfoFromNet(int id) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.points=100;
+        return userInfo;
+    }
+    public class UserInfo{
+        public int id;
+        public int points;
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test06-----------
+        ----------线程调度---------
+=====&gt;: 显示用户积分：100
+</code></pre>
+
+<blockquote>
+<p>在io线程中根据id请求用户信息，在主线程中将用户积分显示到界面</p>
+</blockquote>
+<pre><code>Schedulers.newThread(): 总是启用新线程，并在新线程执行操作,适用于复杂计算。
+Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）
+AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行
+
+subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。 
+observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程
+</code></pre>
+
+<hr />
+<h3>6、变换</h3>
+<blockquote>
+<p>举一个例子：通过用户id，从数据库中请求用户名称，只需要名称就行，id是int类型，用户名称是string类型</p>
+</blockquote>
+<pre><code> public void test07(){
+        Log.e(tag, &quot;------------test07-----------&quot; +
+                &quot;\n----------变换01---------&quot;);
+        //从数据库中根据id获取用户名称
+        Observable.just(111)
+                .map(new Func1&lt;Integer, String&gt;() {
+                    @Override
+                    public String call(Integer id) {
+                        return getNameFromDb(id);
+                    }
+                })
+                .subscribe(new Action1&lt;String&gt;() {
+                    @Override
+                    public void call(String s) {
+                        Log.e(tag,s);
+                    }
+                });
+    }
+    //模拟从数据获取信息
+    private String getNameFromDb(int id){
+        return &quot;username&quot;;
+    }
+    public class UserInfo{
+        public int id;
+        public String name;
+        public int points;
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test07-----------
+        ----------变换01---------
+=====&gt;: username
+</code></pre>
+
+<blockquote>
+<p>这里的map有转换的作用，这里是吧<code>Observable&lt;Integer&gt;</code>转换成了<code>Observable&lt;String&gt;</code>,事件只能是一对一的转换，把发射id的事件，转换成了发射username的事件</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>flatmap转换，举一个例子：根据id从数据库中获取指定用户的爱好，并打印出来</p>
+</blockquote>
+<pre><code>public void test08(){
+        Log.e(tag, &quot;------------test08-----------&quot; +
+                &quot;\n----------变换02---------&quot;);
+        Observable.just(111)
+                .flatMap(new Func1&lt;Integer, Observable&lt;String&gt;&gt;() {
+                    @Override
+                    public Observable&lt;String&gt; call(Integer id) {
+                        return Observable.from(getHobbies(id));
+                    }
+                })
+                .subscribe(new Action1&lt;String&gt;() {
+                    @Override
+                    public void call(String s) {
+                        Log.e(tag,s);
+                    }
+                });
+
+    }
+    //模拟从数据获取信息
+    private String[] getHobbies(int id){
+        return new String[]{&quot;singing&quot;,&quot;running&quot;,&quot;shopping&quot;};
+    }
+    public class UserInfo{
+        public int id;
+        public String name;
+        public int points;
+        public String[] hobbies;
+    }
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test08-----------
+        ----------变换02---------
+=====&gt;: singing
+=====&gt;: running
+=====&gt;: shopping
+</code></pre>
+
+<blockquote>
+<p>这里将<code>Observable&lt;Integer&gt;</code>转换成了 <code>Observable.from(getHobbies(id))</code>，将发射id的事件，转换成了多个发射爱好的事件（爱好有多个），事件是一对多</p>
+</blockquote>
+<hr />
+<h3>7、反注册</h3>
+<blockquote>
+<p>rxJava是基于观察者模式的，我们知道观察者模式中有注册和反注册，反注册就是为了释放资源，防止内存泄露，rxjava中也是，我们也需要及时反注册并释放资源，</p>
+</blockquote>
+<pre><code>    private Subscription subscription;
+    public void test09(){
+        Log.e(tag, &quot;------------test09-----------&quot; +
+                &quot;\n----------反注册---------&quot;);
+        subscription = Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+                @Override
+                public void call(Subscriber&lt;? super String&gt; subscriber) {
+                    SystemClock.sleep(5000);\\暂停5秒钟
+                    subscriber.onNext(&quot;hahaha&quot;);
+                    subscriber.onCompleted();\\标志事件发送完毕，just和from会自动调用onCompleted
+                }
+            })
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Action1&lt;String&gt;() {
+            @Override
+            public void call(String s) {
+                Log.e(tag, s);
+            }
+        });
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(tag,&quot;是否已经反注册：&quot;+subscription.isUnsubscribed()+&quot;&quot;);
+        //先判断是否已经反注册
+        if(!subscription.isUnsubscribed()){
+            Log.e(tag,&quot;进行反注册&quot;);
+            subscription.unsubscribe();
+            Log.e(tag,&quot;是否已经反注册：&quot;+subscription.isUnsubscribed()+&quot;&quot;);
+        }
+    }
+</code></pre>
+
+<blockquote>
+<p><code>Subscription</code>是注册关系，<code>Observable</code>调用<code>subscribe</code>方法时，会形成一个注册关系，<code>Subscription</code>的<code>isUnsubscribed()</code>方法来判断是否已经反注册，<code>unsubscribe()</code>方法来进行反注册。一般情况下，当事件发送完成后，观察者会自动反注册，不用我们调用<code>Subscription</code>的<code>unsubscribe()</code>方法进行反注册，但是当有耗时操作时，我们就有必要进行反注册，上面代码的运行结果如下：</p>
+</blockquote>
+<p><strong>运行结果</strong></p>
+<blockquote>
+<p>在事件还没有发送完毕时（5秒之内），我们关闭了activity：</p>
+</blockquote>
+<pre><code>=====&gt;: ------------test09-----------
+        ----------反注册---------
+=====&gt;: 是否已经反注册：false
+=====&gt;: 进行反注册
+=====&gt;: 是否已经反注册：true
+</code></pre>
+
+<blockquote>
+<p>事件已经发送完（5秒之后）,我们关闭activity：</p>
+</blockquote>
+<pre><code>=====&gt;: ------------test09-----------
+        ----------反注册---------
+=====&gt;: hahaha
+=====&gt;: 是否已经反注册：true
+</code></pre>
+
+<hr />
+<h3>8、操作符使用</h3>
+<blockquote>
+<p>rxJava有着丰富的操作符，来对数据进行流式的操作处理，上面讲到的<code>map</code>和<code>flatmap</code>就是rxJava的操作符，由于操作符太多，只示范常用的几个：</p>
+</blockquote>
+<pre><code> public void test10(){
+    Log.e(tag, &quot;------------test10-----------&quot; +
+            &quot;\n----------操作符---------&quot;);
+   String[] strs={&quot;aa&quot;,&quot;bb&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;,&quot;ee&quot;};
+    Observable&lt;String&gt; observable = Observable.from(strs);
+    //filter(Func1)方法来过滤我们观测序列中不想要的值
+    //take(count)方法来限制获取多少个数据
+    Log.e(tag,&quot;---------filter &amp; take----------&quot;);
+    observable
+            .filter(new Func1&lt;String, Boolean&gt;() {
+                @Override
+                public Boolean call(String s) {
+                    //把已b结尾的数据去掉
+                    return !s.endsWith(&quot;b&quot;);
+                }
+            })
+            .take(3)//取3个数据
+            .subscribe(new Action1&lt;String&gt;() {
+                @Override
+                public void call(String s) {
+                    Log.e(tag,s);
+                }
+        });
+    Log.e(tag,&quot;---------skip &amp; first----------&quot;);
+    observable
+            .skip(3)
+            .first()
+            .subscribe(new Action1&lt;String&gt;() {
+                @Override
+                public void call(String s) {
+                    Log.e(tag,s);
+                }
+            });
+}
+</code></pre>
+
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: ------------test10-----------
+        ----------操作符---------
+=====&gt;: ---------filter &amp; take----------
+=====&gt;: aa
+=====&gt;: cc
+=====&gt;: dd
+=====&gt;: ---------skip &amp; first----------
+=====&gt;: cc
+</code></pre>
+
+<blockquote>
+<p>类似的这种简单的操作符还有：</p>
+</blockquote>
+<pre><code>last() 取最后一个
+distinct() 去除重复的
+skipLast() 去除最后一个
+takeLast(count) 取最后count个
+limit(count) 限制个数
+doOnNext(Action1) 允许我们在每次输出一个元素之前做一些额外的事情，比如保存起来。
+</code></pre>
+
+<blockquote>
+<p>还有好多，这只是简单的介绍一下，在RxJava操作符专题中有详解</p>
+</blockquote>
+<h3>9、RxLifecycle</h3>
+<blockquote>
+<p>我们上面提到了反注册来防止内存泄露，但是反注册需要我们自己动手写，而使用Rxlifecycle就可以帮助我们将反注册绑定到activity或者fragment的生命周期中，在他们的生命周期中自动去解绑。</p>
+</blockquote>
+<p><strong>使用方法</strong></p>
+<blockquote>
+<p>添加依赖,有最新的依赖，但是下面的比较稳定编译也能通过</p>
+</blockquote>
+<pre><code>compile 'com.trello:rxlifecycle:0.3.1'
+compile 'com.trello:rxlifecycle-components:0.3.1'
+</code></pre>
+
+<blockquote>
+<p>Activity/Fragment需继承RxAppCompatActivity/RxFragment，目前支持的有RxAppCompatActivity、RxFragment、RxDialogFragment、RxFragmentActivity</p>
+</blockquote>
+<p><strong>绑定生命周期的时候可调用的方法：</strong></p>
+<pre><code>bindToLifecycle()
+bindUntilEvent()
+</code></pre>
+
+<p><strong>例子</strong></p>
+<pre><code>public class MainActivity extends RxAppCompatActivity {
+
+    private static final String TAG = &quot;=====&gt;&quot;;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.e(TAG, &quot;onCreate()&quot;);
+        setContentView(R.layout.activity_main);
+        Observable.interval(1, TimeUnit.SECONDS)
+                .doOnUnsubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e(TAG, &quot;Unsubscribing subscription from onCreate()&quot;);
+                    }
+                })
+                .compose(this.&lt;Long&gt;bindUntilEvent(ActivityEvent.PAUSE))
+                .subscribe(new Action1&lt;Long&gt;() {
+                    @Override
+                    public void call(Long num) {
+                        Log.e(TAG, &quot;Started in onCreate(), running until onPause(): &quot; + num);
+                    }
+                });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, &quot;onStart()&quot;);
+        // Using automatic unsubscription, this should determine that the correct time to
+        // unsubscribe is onStop (the opposite of onStart).
+        Observable.interval(1, TimeUnit.SECONDS)
+                .doOnUnsubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e(TAG, &quot;Unsubscribing subscription from onStart()&quot;);
+                    }
+                })
+                .compose(this.&lt;Long&gt;bindToLifecycle())
+                .subscribe(new Action1&lt;Long&gt;() {
+                    @Override
+                    public void call(Long num) {
+                        Log.e(TAG, &quot;Started in onStart(), running until in onStop(): &quot; + num);
+                    }
+                });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, &quot;onResume()&quot;);
+        // `this.&lt;Long&gt;` is necessary if you're compiling on JDK7 or below.
+        //
+        // If you're using JDK8+, then you can safely remove it.
+        Observable.interval(1, TimeUnit.SECONDS)
+                .doOnUnsubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e(TAG, &quot;Unsubscribing subscription from onResume()&quot;);
+                    }
+                })
+                .compose(this.&lt;Long&gt;bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(new Action1&lt;Long&gt;() {
+                    @Override
+                    public void call(Long num) {
+                        Log.e(TAG, &quot;Started in onResume(), running until in onDestroy(): &quot; + num);
+                    }
+                });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, &quot;onPause()&quot;);
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, &quot;onStop()&quot;);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, &quot;onDestroy()&quot;);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>打开activity，两秒后关闭，这样每一个Observable发送两个事件</p>
+</blockquote>
+<p><strong>运行结果</strong></p>
+<pre><code>=====&gt;: onCreate()
+=====&gt;: onStart()
+=====&gt;: onResume()
+=====&gt;: Started in onCreate(), running until onPause(): 0
+=====&gt;: Started in onStart(), running until in onStop(): 0
+=====&gt;: Started in onResume(), running until in onDestroy(): 0
+=====&gt;: Started in onCreate(), running until onPause(): 1
+=====&gt;: Started in onStart(), running until in onStop(): 1
+=====&gt;: Started in onResume(), running until in onDestroy(): 1
+=====&gt;: Unsubscribing subscription from onCreate()
+=====&gt;: onPause()
+=====&gt;: Unsubscribing subscription from onStart()
+=====&gt;: onStop()
+=====&gt;: Unsubscribing subscription from onResume()
+</code></pre>
+
+<blockquote>
+<p>关闭activity后，可以看出每一个Observable对应的注册者在相应的生命周期函数中反注册。
+<code>bindUntilEvent()</code>方法需要传入要绑定的生命周期。使用ActivityEvent类，其中的CREATE、START、 RESUME、PAUSE、STOP、 DESTROY分别对应生命周期内的方法。使用bindUntilEvent指定在哪个生命周期方法调用时取消订阅</p>
+<p><code>bindToLifecycle()</code>方法完成Observable发布的事件和当前的组件绑定，实现生命周期同步。从而实现当前组件生命周期结束时，自动取消对Observable订阅。</p>
+</blockquote>
+<hr />
+<h3>10、RxBinding</h3>
+<blockquote>
+<p>RxBinding是Rx中处理控件异步调用的方式, 也是由Square公司开发, Jake负责编写. 通过绑定组件, 异步获取事件, 并进行处理。</p>
+</blockquote>
+<p><strong>使用</strong></p>
+<blockquote>
+<p>关联</p>
+</blockquote>
+<pre><code>compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
+</code></pre>
+
+<blockquote>
+<p>实例</p>
+</blockquote>
+<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    android:orientation=&quot;vertical&quot;
+    tools:context=&quot;cn.domob.android.rxjava_android.MainActivity&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_main&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+    &lt;Button
+        android:id=&quot;@+id/bt_main_01&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;改变字体颜色&quot;/&gt;
+    &lt;Button
+        android:id=&quot;@+id/bt_main_02&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;长按弹toast&quot;/&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/et_main&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;搜索&quot;/&gt;
+    &lt;ListView
+        android:id=&quot;@+id/lv_main&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<hr />
+<pre><code>public class MainActivity extends RxAppCompatActivity {
+
+    private static final String TAG = &quot;=====&gt;&quot;;
+    @InjectView(R.id.tv_main)
+    TextView tv;
+    @InjectView(R.id.bt_main_01)
+    Button bt01;
+    @InjectView(R.id.bt_main_02)
+    Button bt02;
+    @InjectView(R.id.et_main)
+    EditText et;
+    @InjectView(R.id.lv_main)
+    ListView lv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
+        //单机事件
+        RxView.clicks(bt01).subscribe(new Action1&lt;Void&gt;() {
+            @Override
+            public void call(Void aVoid) {
+                tv.setTextColor(Color.parseColor(&quot;#ff0000&quot;));
+            }
+        });
+        //长按事件
+        RxView.longClicks(bt02).subscribe(new Action1&lt;Void&gt;() {
+            @Override
+            public void call(Void aVoid) {
+                Toast.makeText(MainActivity.this, &quot;hahha&quot;, Toast.LENGTH_SHORT).show();     
+            }
+        });
+        //防止连续点击
+        RxView.clicks(bt02).throttleFirst(5, TimeUnit.SECONDS).subscribe(new Action1&lt;Void&gt;() {
+            @Override
+            public void call(Void aVoid) {
+                Toast.makeText(MainActivity.this, &quot;防止多次连续点击&quot;, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //完成关键词联想功能,debounce()在一定的时间内没有操作就会发送事件，显示关键词
+        final ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;&gt;(this, android.R.layout.simple_expandable_list_item_1);
+        lv.setAdapter(adapter);
+        RxTextView.textChanges(et)
+                .debounce(600,TimeUnit.MILLISECONDS)
+                .map(new Func1&lt;CharSequence, String&gt;() {
+                    @Override
+                    public String call(CharSequence charSequence) {
+                        return charSequence.toString();
+                    }
+                })
+                .map(new Func1&lt;String, List&lt;String&gt;&gt;() {
+                    @Override
+                    public List&lt;String&gt; call(String key) {
+                        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+                        if(!TextUtils.isEmpty(key)){
+                            for (int i = 0; i &lt; getdata().size(); i++) {
+                                if(getdata().get(i).contains(key))
+                                    arrayList.add(getdata().get(i));
+                            }
+                        }
+                        return arrayList;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1&lt;List&lt;String&gt;&gt;() {
+                    @Override
+                    public void call(List&lt;String&gt; strings) {
+                        adapter.clear();
+                        adapter.addAll(strings);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
+        RxAdapterView.itemClicks(lv).subscribe(new Action1&lt;Integer&gt;() {
+            @Override
+            public void call(Integer integer) {
+                et.setText(adapter.getItem(integer));
+            }
+        });
+
+    }
+
+    public List&lt;String&gt; getdata(){
+        return Arrays.asList(&quot;abc&quot;,&quot;abddfds&quot;,&quot;123&quot;,&quot;124567&quot;,&quot;1278934&quot;,&quot;adfghjl&quot;,&quot;!@#45d&quot;,&quot;响应式编程&quot;);
+    }
+}
+</code></pre>
+
+
+</TD>
+	</TR>
+</TABLE>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

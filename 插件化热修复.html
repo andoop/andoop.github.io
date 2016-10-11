@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>插件化热修复</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="./js/ztree_toc.js"></script>
+	<SCRIPT type="text/javascript" >
+	<!--
+	$(document).ready(function(){
+		$('#tree').ztree_toc({
+
+		});
+	});
+	//-->
+	</SCRIPT>
+
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+
+<TABLE border=0 width=1100px height=600px align=left>
+	<TR>
+		<TD width=110px align=left valign=top style="BORDER-RIGHT: #999999 1px dashed">
+			<ul id="tree" class="ztree">
+				
+			</ul>
+		</TD>
+		<TD width=1000px align=left valign=top>
+<h1>插件化和热修复</h1>
+<h2>第一部分：Android动态加载</h2>
+<h3>实现步骤</h3>
+<h4>1、	创建工程</h4>
+<blockquote>
+<p>创建DLoad主工程（宿主工程），在DLoad中创建dloadlib（公共模块）库工程，再创建dloadplugin（动态工程，也可以叫做插件工程）子工程。</p>
+</blockquote>
+<h4>2、创键宿主和插件工程交互的接口</h4>
+<blockquote>
+<p>在dloadlib中创建Idload接口（interfaces包文件下），具体如下：</p>
+</blockquote>
+<pre><code>public interface Idload {
+   void showList(Context context);
+}
+</code></pre>
+
+<blockquote>
+<p>这里只创键了一个方法而已，只为简单的示范功能</p>
+</blockquote>
+<h4>3、插件工程关联公共模块</h4>
+<blockquote>
+<p>在插件工程dloadplugin的build.gradle的依赖关系中添加如下：</p>
+</blockquote>
+<pre><code>provided project(':dloadlib')
+</code></pre>
+
+<blockquote>
+<p>注意这里是provided不是compile，否则可能会出现异常</p>
+</blockquote>
+<h4>4、插件工程中定义交互接口的实现类</h4>
+<blockquote>
+<p>在插件工程dloadplugin中添加类DloadImp使其实现公共模块中的Idload接口：</p>
+</blockquote>
+<pre><code>public class DloadImp implements Idload {
+
+    @Override
+    public void showList(Context context) {
+
+
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>宿主工程中也会有一个类去实现Idload接口，这个类就叫做代理类，后面将会讲解到，宿主工程中调用代理类的<code>showList(Context context)</code>方法，代理类则会调用插件的<code>showList(Context context)</code>方法，插件中此方法中就会做一些操作，咱们慢慢来，后面都会讲解到。</p>
+</blockquote>
+<h4>5、公共模块中定义代理组件</h4>
+<blockquote>
+<p>由于插件中的类是通过classloader加载到宿主中的，插件中如果有有生命周期的组件，如：Activity、Fragment、Service等，这些组件的类就会被当做普通的类对待，系统并不会维护他们的生命周期，这个问题的普遍解决方案是：在宿主工程中预注册一些组件如：Activity和Service，来“占坑”，在这些组件对应的生命周期中实际调用插件中的组件的生命周期方法，达到代理插件中组件生命周期的目的</p>
+<p>在这里我们在公共模块中定义了一个代理Activity，来承载插件中的Fragment（后面将完成），在dloadlib中创建DloadActivity:</p>
+</blockquote>
+<pre><code>public class DLoadActivity extends FragmentActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+}
+</code></pre>
+
+<h4>6、宿主关联公共模块</h4>
+<blockquote>
+<p>在宿主app目录下的build.gradle中添加如下：</p>
+</blockquote>
+<pre><code>compile project(':dloadlib')
+</code></pre>
+
+<h4>7、宿主中“占坑”</h4>
+<blockquote>
+<p>在宿主清单文件中注册公共模块中的DLoadActivity</p>
+</blockquote>
+<pre><code> &lt;activity android:name=&quot;cn.andoop.android.dloadlib.DLoadActivity&quot;
+            android:screenOrientation=&quot;portrait&quot;/&gt;
+</code></pre>
+
+<h4>8、完成插件中列表页面</h4>
+<blockquote>
+<p>当调用插件的<code>showList(Context context)</code>方法时，将会打开插件中的一个页面</p>
+<p>在插件dloadplugin中的ui包下创建ListFragment如下：</p>
+</blockquote>
+<pre><code>public class ListFragment extends Fragment implements OnItemClickListener {
+
+    private RelativeLayout rl_content;
+    private MBaseAdapter mBaseAdapter;
+    private List&lt;ListItem&gt; data;
+
+    @Override
+    @Nullable
+    public View onCreateView(LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initData();
+        return getContentView();
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        data = new ArrayList&lt;ListItem&gt;();
+        mBaseAdapter = new MBaseAdapter(getActivity(), data);
+        ListItem listItem = new ListItem();
+        listItem.id=1;
+        listItem.text=&quot;android 周刊&quot;;
+        listItem.url=&quot;http://www.androidweekly.cn&quot;;
+        data.add(listItem);
+
+        ListItem listItem2 = new ListItem();
+        listItem2.id=2;
+        listItem2.text=&quot;百度&quot;;
+        listItem2.url=&quot;http://www.baidu.com&quot;;
+        data.add(listItem2);
+
+        ListItem listItem3 = new ListItem();
+        listItem3.id=3;
+        listItem3.text=&quot;网易&quot;;
+        listItem3.url=&quot;http://163.com&quot;;
+        data.add(listItem3);
+    }
+    /**
+     * 生成视图，插件中不经过特殊处理，不能通过布局文件生成页面
+     * 所以要代码中完成页面布局
+     * @return
+     */
+    private View getContentView() {
+        rl_content = new RelativeLayout(getActivity());
+        ListView listView = new ListView(getActivity());
+        rl_content.addView(listView);
+        listView.setAdapter(mBaseAdapter);
+        listView.setOnItemClickListener(this);
+        return rl_content;
+    }
+
+    @Override
+    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position,
+            long id) {
+        ListItem listItem = data.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(&quot;item&quot;, listItem);
+        //点击条目，跳转到对应的详细页面，这个详细页面也在插件中，并通过
+        //公共模块中的代理Activity DLoadActivity来承载详细页面的Fragment，start方法后面将会讲解到
+        DLoadActivity.start(getActivity(), &quot;cn.andoop.android.dloadplugin.ui.DetailFragment&quot;, bundle);
+    }
+
+    public static class MBaseAdapter extends BaseAdapter{
+
+        private Context context;
+        private List&lt;ListItem&gt; data;
+
+        public MBaseAdapter(Context context,List data){
+            this.context=context;
+            this.data=data;
+        }
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return data.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return data.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
+
+            TextView tv = new TextView(context);
+            tv.setText(data.get(position).text);
+            tv.setPadding(20, 20, 20, 20);
+            //tv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            tv.setGravity(Gravity.CENTER);
+            return tv;
+        }
+    }
+
+}
+</code></pre>
+
+<h4>9、完成插件中详情页面</h4>
+<blockquote>
+<p>在插件工程dloadplugin的ui包文件中创建详情页面DetailFragment：</p>
+</blockquote>
+<pre><code>public class DetailFragment extends Fragment {
+
+    @Override
+    @Nullable
+    public View onCreateView(LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return getContentView();
+    }
+
+    private View getContentView() {
+        LinearLayout linearLayout = new LinearLayout(getActivity());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        TextView title = new TextView(getActivity());
+        ImageView imageView=new ImageView(getActivity());
+        WebView webView = new WebView(getActivity());
+
+        title.setPadding(20, 20, 20, 20);
+        title.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        title.setGravity(Gravity.CENTER);
+
+        webView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+        });
+        webView.getSettings().setJavaScriptEnabled(true);
+
+        linearLayout.addView(title);
+        linearLayout.addView(imageView);
+        linearLayout.addView(webView);
+
+        //获取资源
+        Bitmap imageResouce = new ResourceUtils(getActivity()).getImageResouce(&quot;assets/car.jpg&quot;);
+        imageView.setImageBitmap(imageResouce);
+
+        Bundle bundle = getArguments();
+        if(bundle!=null&amp;&amp;( bundle.getSerializable(&quot;item&quot;)!=null)){
+            if(bundle.getSerializable(&quot;item&quot;) instanceof ListItem) {
+                ListItem listitem = (ListItem) bundle.getSerializable(&quot;item&quot;);
+                title.setText(listitem.text);
+                webView.loadUrl(listitem.url);
+            }
+        }
+
+        return linearLayout;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>详情页面的布局也不能通过布局文件完成，需要通过代码来布局,详情页面中用到了图片资源，当然图片资源也不能通过R来访问，在这里，通过一个工具ResourceUtils来获取在插件中的assets目录中存放的图片资源，这个工具类，创建到公共模块的utils文件中：</p>
+</blockquote>
+<pre><code>public class ResourceUtils {
+    private Context mContext;
+    private String mFilePath;
+
+    public ResourceUtils(Context context) {
+        this.mContext = context;
+        // data/data/packName/files/
+        this.mFilePath = context.getFilesDir().getAbsolutePath()
+                + File.separator;
+    }
+
+    /**
+     * 根据文件名获取一个图片资源
+     * 
+     * @param fileName
+     * @return
+     */
+    public Bitmap getImageResouce(String fileName) {
+        Bitmap bitmap = getImageFromPrivateSpace(fileName);
+        if (null != bitmap) {
+            Log.e(&quot;&gt;&gt;&gt;&quot;,&quot;get bp success&quot;);
+        }
+        if (null == bitmap) {
+            // 获取SDK保存的jar文件名称，获取资源
+            String jarPath = mFilePath+ MConstans.jarname;
+            bitmap = getImageFromDataFileJar(jarPath, fileName);
+        }
+
+        if (null == bitmap) {
+            // 遍历找到jar包，然后获取资源
+            bitmap = getImageFromDataFileJar(fileName);
+        }
+
+        return bitmap;
+    }
+
+    /**
+     * 从私有空间中获取资源图片
+     * 
+     * @param fileName
+     * @return
+     */
+    private Bitmap getImageFromPrivateSpace(String fileName) {
+        File mFile = new File(mFilePath + fileName);
+        // 若该文件存在
+        if (mFile.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(mFilePath + fileName);
+            return bitmap;
+        }
+        return null;
+    }
+
+    /**
+     * 通过jar文件中获取资源图片
+     * 
+     * @param jarPath
+     *            jar文件的路径
+     * @param fileName
+     *            文件名 &quot;assets/images/xxx.png&quot;
+     * @return
+     */
+    private Bitmap getImageFromDataFileJar(String jarPath, String fileName) {
+        JarFile jarfile = null;
+        InputStream is = null;
+        try {
+            jarfile = new JarFile(jarPath);
+            if (null != jarfile) {
+                ZipEntry zipEntry = jarfile.getEntry(fileName);
+                if (null != zipEntry) {
+                    is = jarfile.getInputStream(zipEntry);
+                    // 将inputStream流转为bmp对象
+                    Bitmap bmp = BitmapFactory.decodeStream(is);
+                    is.close();
+                    jarfile.close();
+                    //解压找到资源对应的jar
+                    new ZipTool().execute(jarPath, mFilePath);
+                    return bmp;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            try {
+                is.close();
+                jarfile.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 通过默认路径的jar文件获取资源图片
+     * 
+     * @param fileName
+     *            文件名 &quot;res/drawable-mdpi/ic_launcher.png&quot;
+     * @return Bitmap
+     */
+    private Bitmap getImageFromDataFileJar(String fileName) {
+        String jarPath = iteratorFolder(mFilePath);
+        return getImageFromDataFileJar(jarPath, fileName);
+    }
+
+    /**
+     * 遍历获取根目录下.jar文件
+     * 
+     * @param path
+     * @return
+     */
+    private String iteratorFolder(String path) {
+        File file = new File(path);
+        if (file.exists()) {
+            File[] files = file.listFiles();
+            if (files.length == 0) {
+                return null;
+            } else {
+                for (File subFile : files) {
+                    String subFilePath = subFile.getAbsolutePath();
+                    if (!subFile.isDirectory()) {
+                        String prefix = subFilePath.substring(subFilePath
+                                .lastIndexOf(&quot;.&quot;) + 1);
+                        if (&quot;jar&quot;.equals(prefix)) {
+                            return subFilePath;
+                        }
+                    }
+                }
+            }
+        } else {
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>此类中用到了另一个工具类ZipTool,用来解压zip文件（这个zip文件就是动态jar包，jar文件本质是zip文件），在公共模块的utils包文件中创建ZipTool ：</p>
+</blockquote>
+<pre><code>public class ZipTool {
+
+    public boolean execute(String from, String to) {
+        int index = from.lastIndexOf(&quot;/&quot;);
+        String absFileName = from.substring(index);
+        String baseDir = from.substring(0, index);
+        File zipFile = getRealFileName(baseDir, absFileName);
+        try {
+            upZipFile(zipFile, to);
+            return true;
+        } catch (ZipException e) {
+            return false;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    private int upZipFile(File zipFile, String folderPath) throws ZipException,
+            IOException {
+        ZipFile zfile = new ZipFile(zipFile);
+        Enumeration&lt;? extends ZipEntry&gt; zList = zfile.entries();
+        ZipEntry ze = null;
+        byte[] buf = new byte[1024];
+        File ffolderPath = new File(folderPath);
+        if (!ffolderPath.exists()) {
+            ffolderPath.mkdir();
+        }
+        while (zList.hasMoreElements()) {
+            ze = (ZipEntry) zList.nextElement();
+            if (ze.isDirectory()) {
+                String dirstr = folderPath + ze.getName();
+                // dirstr.trim();
+                dirstr = new String(dirstr.getBytes(&quot;utf-8&quot;),&quot;utf-8&quot;);
+                File f = new File(dirstr);
+                f.mkdir();
+                continue;
+            }
+            if (getRealFileName(folderPath, ze.getName()) != null) {
+                OutputStream os = new BufferedOutputStream(
+                        new FileOutputStream(getRealFileName(folderPath,
+                                ze.getName())));
+                InputStream is = new BufferedInputStream(
+                        zfile.getInputStream(ze));
+                int readLen = 0;
+                while ((readLen = is.read(buf, 0, 1024)) != -1) {
+                    os.write(buf, 0, readLen);
+                }
+                is.close();
+                os.close();
+            }
+
+        }
+        zfile.close();
+        return 0;
+    }
+
+    private File getRealFileName(String baseDir, String absFileName) {
+        String[] dirs = absFileName.split(&quot;/&quot;);
+        if (dirs.length &lt; 2) {
+            File ret1 = new File(baseDir);
+            return new File(ret1, dirs[0]);
+        }
+        File ret = new File(baseDir);
+        String substr = null;
+        if (dirs.length &gt; 1) {
+            for (int i = 0; i &lt; dirs.length - 1; i++) {
+                substr = dirs[i];
+                try {
+                    substr = new String(substr.getBytes(&quot;utf-8&quot;), &quot;utf-8&quot;);
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                ret = new File(ret, substr);
+
+            }
+            if (!ret.exists())
+                ret.mkdirs();
+            substr = dirs[dirs.length - 1];
+            try {
+                substr = new String(substr.getBytes(&quot;utf-8&quot;),&quot;utf-8&quot;);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            ret = new File(ret, substr);
+            return ret;
+        }
+        return ret;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>工具拿过来用就行，不用太关注它的具体实现，关注本教程的重点就行</p>
+</blockquote>
+<h4>10、完成插件工程dloadplugin</h4>
+<blockquote>
+<p>插件工程主要功能已经完成，完成的主要功能就是展现一个网站的列表，点击条目就会跳转到对应的详情页面，在详情页面中我们访问了插件中的图片资源，用webview展现了网页</p>
+</blockquote>
+<h4>11、完善公共模块中的代理Activity</h4>
+<blockquote>
+<p>上面只是简单创建了代理Activity DLoadActivity,下面具体实现它的功能 </p>
+</blockquote>
+<pre><code>public class DLoadActivity extends FragmentActivity {
+    private final static String CLASS_NAME = &quot;classname&quot;;
+    private String mClassName;
+    private Bundle mBundle;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (null != getIntent()) {
+            mClassName = getIntent().getStringExtra(CLASS_NAME);
+            mBundle = getIntent().getExtras();
+        }
+        setContentView(getContentView());
+    }
+
+    private View getContentView() {
+        LinearLayout ll_content = new LinearLayout(this);
+        ll_content.setOrientation(LinearLayout.VERTICAL);
+        ll_content.setId(10000012);
+        FragmentTransaction ft = this.getSupportFragmentManager()
+                .beginTransaction();
+        // 通过类名，反射获取到对应的类。既Fragment
+        Fragment fragment = (Fragment) DexExcutor.getInstance(this)
+                .newInstance(mClassName);
+        if (null != fragment) {
+            if (null != mBundle) {
+                fragment.setArguments(mBundle);
+            }
+            ft.add(ll_content.getId(), fragment, mClassName);
+            ft.commit();
+        }
+        return ll_content;
+    }
+
+    public static void start(Context context, String className, Bundle bundle) {
+        Intent intent = new Intent(context, DLoadActivity.class);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        intent.putExtra(CLASS_NAME, className);
+        context.startActivity(intent);
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>静态方法start用来启动代理Activity，并传入要承载的插件中的Fragment的全类名以及相关的bundle；<code>getContentView</code>方法用来根据传入的Fragment的全类名生成页面。<code>DexExcutor</code>类用来下载、加载、生成插件中类的对象。后面将会讲解到，这里是调用<code>DexExcutor</code>的<code>newInstance</code>方法来生成一个插件中Fragment的对象</p>
+</blockquote>
+<h4>12、添加插件加载监听</h4>
+<blockquote>
+<p>插件加载需要从网络或者其它途径加载，需要一个过程，调用插件时，传入监听检测插件加载状态。在公共模块的listener包文件中创建<code>DloadListener</code></p>
+</blockquote>
+<pre><code>public interface DloadListener {
+
+    void onStart();
+    void onSuccess();
+    void onFail(String err);
+    void onProgress(int persent);
+
+}
+</code></pre>
+
+<h4>13、完成插件加载、维护、生成对象功能</h4>
+<blockquote>
+<p>上面通过代码可以知道<code>DexExcutor</code>类用来下载、加载、生成插件中类的对象，在公共模块中创建类<code>DexExcutor</code></p>
+</blockquote>
+<pre><code>public class DexExcutor {
+
+    public static DexExcutor INSTANCE;
+    private Context context;
+    private DloadListener dloadListener;
+    private String filepath;
+    private DexClassLoader dexClassLoader;
+    private DexExcutor(Context context){
+        this.context = context;
+        filepath=context.getFilesDir().getAbsolutePath();
+    }
+    public static DexExcutor getInstance(Context context){
+
+      if(INSTANCE==null){
+          synchronized (Dload.class) {
+              if(INSTANCE==null){
+                  INSTANCE=new DexExcutor(context);
+              }
+
+        }
+      }
+      return INSTANCE;
+    }
+
+    public void init(DloadListener dloadListener){
+        this.dloadListener = dloadListener;
+        if(dloadListener!=null)
+            dloadListener.onStart();
+
+        //检查插件是否存在
+        File file = new File(filepath+File.separator+MConstans.jarname);
+        if(file.exists()){
+            //存在，加载插件
+            loadPlugin();
+        }else{
+            //不存在，则将插件从asset或者服务端加载到本地
+            downloadPlugin();
+        }
+    }
+
+    private void downloadPlugin() {
+        // TODO Auto-generated method stub
+        DloadUtils.downloadPlugin(context,&quot;plugin.jar&quot;,filepath+File.separator+MConstans.jarname,new DloadUtils.Downloadlistener() {
+            @Override
+            public void onSuccess() {
+                loadPlugin();
+            }
+            @Override
+            public void onStart() {
+            }
+            @Override
+            public void onProgress(int progress) {
+                // TODO Auto-generated method stub
+                if(dloadListener!=null){
+                    dloadListener.onProgress(progress);
+                }
+            }
+            @Override
+            public void onFail(String err) {
+                // TODO Auto-generated method stub
+                if(dloadListener!=null){
+                    dloadListener.onFail(err);
+                }
+            }
+        });
+    }
+    /**
+     * 加载插件
+     */
+    private void loadPlugin() {
+        try {
+            dexClassLoader = new DexClassLoader(filepath+File.separator+MConstans.jarname, filepath,null, context.getClassLoader());
+            if(dloadListener!=null){
+                dloadListener.onProgress(100);
+                dloadListener.onSuccess();
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            if(dloadListener!=null)
+                dloadListener.onFail(e.getMessage());
+        }
+    }
+    /**
+     * 根据类名获取一个实例
+     * 
+     * @param className
+     *            例:cn.andoop.android.dloadplugin.ui.ListFragment
+     * @return Object
+     */
+    public Object newInstance(String className) {
+        try {
+            if (null != dexClassLoader) {
+                Class&lt;?&gt; dynamic_class = dexClassLoader.loadClass(className);
+                return dynamic_class.newInstance();
+            }
+        } catch (ClassNotFoundException e) {
+            Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+        } catch (InstantiationException e) {
+            Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+        } catch (IllegalAccessException e) {
+            Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+        }
+        return null;
+    }
+
+
+}
+</code></pre>
+
+<blockquote>
+<p>本类在init方法中会先判断插件是否存在，如果存在，直接加载插件：</p>
+</blockquote>
+<pre><code>    /**
+     * 加载插件
+     */
+    private void loadPlugin() {
+        try {
+            dexClassLoader = new DexClassLoader(filepath+File.separator+MConstans.jarname, filepath,null, context.getClassLoader());
+            if(dloadListener!=null){
+                dloadListener.onProgress(100);
+                dloadListener.onSuccess();
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            if(dloadListener!=null)
+                dloadListener.onFail(e.getMessage());
+        }
+    }
+</code></pre>
+
+<blockquote>
+<p>本方法的核心代码是</p>
+</blockquote>
+<pre><code>dexClassLoader = new DexClassLoader(filepath+File.separator+MConstans.jarname, filepath,null, context.getClassLoader());
+</code></pre>
+
+<blockquote>
+<p>生成插件对应的DexClassLoader,<code>MConstans</code>是公共模块中的常量类，可以放入一些常量，方便维护管理</p>
+</blockquote>
+<pre><code>public class MConstans {
+    //动态jar目录
+    public static String jarname=&quot;plugin.jar&quot;;
+}
+</code></pre>
+
+<blockquote>
+<p>当插件不存在时，本例中将会从宿主的assets目录下加载插件，当然也可以从网络获取</p>
+</blockquote>
+<pre><code>private void downloadPlugin() {
+            // TODO Auto-generated method stub
+            DloadUtils.downloadPlugin(context,&quot;plugin.jar&quot;,filepath+File.separator+MConstans.jarname,new DloadUtils.Downloadlistener() {
+                @Override
+                public void onSuccess() {
+                    loadPlugin();
+                }
+                @Override
+                public void onStart() {
+                }
+                @Override
+                public void onProgress(int progress) {
+                    // TODO Auto-generated method stub
+                    if(dloadListener!=null){
+                        dloadListener.onProgress(progress);
+                    }
+                }
+                @Override
+                public void onFail(String err) {
+                    // TODO Auto-generated method stub
+                    if(dloadListener!=null){
+                        dloadListener.onFail(err);
+                    }
+                }
+            });
+        }
+</code></pre>
+
+<blockquote>
+<p><code>DloadUtils</code>类是一个工具类，直接使用即可，它的<code>downloadPlugin</code>会将assets目录下的“plugin.jar”下载到<code>filepath+File.separator+MConstans.jarname</code>，此工具类建在公共模块的utils包文件下：</p>
+</blockquote>
+<pre><code>public class DloadUtils {
+
+    public interface Downloadlistener{
+        void onStart();
+        void onProgress(int progress);
+        void onFail(String err);
+        void onSuccess();
+    }
+
+    /**
+     * 从asset目录下将指定的文件写到指定位置
+     * @param context
+     * @param srcfile
+     * @param destfile
+     * @param dloadListener
+     */
+    public static void downloadPlugin(Context context,String srcfile,String destfile,
+            Downloadlistener dloadListener) {
+
+        AssetManager assetManager = context.getAssets();
+        try {
+            InputStream inputStream = assetManager.open(srcfile);
+            FileOutputStream fileOutputStream = new FileOutputStream(new File(destfile));
+
+            byte[] buf = new byte[1024];
+            int ch = -1;
+            int total = -1;
+            while ((ch = inputStream.read(buf)) != -1) {
+
+                total += ch; // total = total + len1
+                if(dloadListener!=null){
+                    dloadListener.onProgress((int) ((total * 100) / 10000));
+                }
+                fileOutputStream.write(buf, 0, ch);
+            }
+
+            inputStream.close();
+            fileOutputStream.close();
+
+            if(dloadListener!=null){
+                dloadListener.onSuccess();
+            }
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            if(dloadListener!=null){
+                dloadListener.onFail(e.getMessage());
+            }
+        }
+
+
+    }
+
+
+}
+</code></pre>
+
+<blockquote>
+<p>然后根据全类名生成对象：</p>
+</blockquote>
+<pre><code>/**
+         * 根据类名获取一个实例
+         * 
+         * @param className
+         *            例:cn.andoop.android.dloadplugin.ui.ListFragment
+         * @return Object
+         */
+        public Object newInstance(String className) {
+            try {
+                if (null != dexClassLoader) {
+                    Class&lt;?&gt; dynamic_class = dexClassLoader.loadClass(className);
+                    return dynamic_class.newInstance();
+                }
+            } catch (ClassNotFoundException e) {
+                Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+            } catch (InstantiationException e) {
+                Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+            } catch (IllegalAccessException e) {
+                Log.e(&quot;&gt;&gt;&gt;&quot;, &quot;newInstance:&quot; + e.getMessage());
+            }
+            return null;
+        }
+
+
+    }
+</code></pre>
+
+<h4>14、完成插件代理类</h4>
+<blockquote>
+<p>公共模块中有一个代理类，这个类也实现了Idload接口，我们调用代理类的方法，实际是调用插件中对应的方法，在公共模块的proxy包文件中建一个类 DloadProxy：</p>
+</blockquote>
+<pre><code>public class DloadProxy implements Idload {
+
+    @Override
+    public void showList(Context context) {
+        Idload newInstance = (Idload) DexExcutor.getInstance(context).newInstance(&quot;cn.andoop.android.dloadplugin.DloadImp&quot;);
+        if(newInstance==null){
+            Toast.makeText(context, &quot;插件还没有加载好&quot;, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        newInstance.showList(context);
+    }
+}
+</code></pre>
+
+<h4>15、“门面类”</h4>
+<blockquote>
+<p>一般sdk开发都要有一个“门面类”，这个类中暴露一些方法和字段，是的可以初始化sdk和调用其功能，我们这里的公共模块其实就是我们写的一个加载插件的sdk，这里我们写一个“门面类”来暴露初始化我们的sdk和调用其功能的方法，在公共模块中建一个类：</p>
+</blockquote>
+<pre><code>public class Dload {
+
+    private Context context;
+    private DloadProxy dloadProxy;
+
+    public static Dload INSTANCE;
+    private Dload(Context context){
+        this.context = context;
+    }
+    public static Dload getInstance(Context context){
+
+      if(INSTANCE==null){
+          synchronized (Dload.class) {
+              if(INSTANCE==null){
+                  INSTANCE=new Dload(context);
+              }
+
+        }
+      }
+      return INSTANCE;
+    }
+    /**
+     * 初始化状态，例如：加载插件
+     */
+    public void init(DloadListener dloadListener){
+        DexExcutor.getInstance(context).init(dloadListener);
+        dloadProxy=new DloadProxy();
+    }
+    /**
+     * 打开列表，最终会调用插件功能
+     */
+    public void showList(){
+        dloadProxy.showList(context);
+    }
+}
+</code></pre>
+
+<h4>16、使用</h4>
+<blockquote>
+<p>在宿主工程中，这里是app子工程中，的MainActivity如下：</p>
+</blockquote>
+<pre><code>public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Dload.getInstance(this).init(new DloadListener() {
+
+            @Override
+            public void onSuccess() {
+                // TODO Auto-generated method stub
+                Log.e(&quot;&gt;&gt;&gt;&quot;,&quot;sccess&quot;);
+            }
+
+            @Override
+            public void onStart() {
+                // TODO Auto-generated method stub
+                Log.e(&quot;&gt;&gt;&gt;&quot;,&quot;start&quot;);
+            }
+
+            @Override
+            public void onProgress(int persent) {
+                // TODO Auto-generated method stub
+                Log.e(&quot;&gt;&gt;&gt;&quot;,&quot;progress&gt;&quot;+persent+&quot;%&quot;);
+            }
+
+            @Override
+            public void onFail(String err) {
+                // TODO Auto-generated method stub
+                Log.e(&quot;&gt;&gt;&gt;&quot;,&quot;fail&gt;&quot;+err);
+            }
+        });
+    }
+
+
+    public void showList(View view){
+        Dload.getInstance(this).showList();
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>布局文件如下：</p>
+</blockquote>
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;com.example.dynamicloadtest.MainActivity&quot; &gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button1&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentTop=&quot;true&quot;
+        android:layout_centerHorizontal=&quot;true&quot;
+        android:layout_marginTop=&quot;188dp&quot;
+        android:onClick=&quot;showList&quot;
+        android:text=&quot;打开插件&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<h4>17、插件打包</h4>
+<blockquote>
+<ul>
+<li>生成的插件jar需要需要通过dex编译后才能被DexClassLoader加载，需要通过dex进行编译</li>
+</ul>
+</blockquote>
+<ol>
+<li>导出插件jar，需要包含asset目录下图片资源</li>
+<li>通过dex进行编译</li>
+</ol>
+<blockquote>
+<p>在插件工程dloadplugin的build.gradle中写导出jar的任务，首先在dloadplugin工程的assets目录下添加一个assets文件夹，下面放一个car.jpg的图片</p>
+</blockquote>
+<pre><code>task buildLib (type: Jar,dependsOn:'build') {
+    from ('build/intermediates/classes/release')
+    //包含资源目录
+    from ('src/main/assets/')
+    //from fileTree(dir: 'src/main',includes: ['assets/**'])
+
+}
+</code></pre>
+
+<blockquote>
+<p>执行buildLib任务，完成后就可以在build/lib/下发现生成的dloadplugin.jar,接下来就要进行dex编译了</p>
+</blockquote>
+<pre><code>cd E:\android_dev\sdk\sdk\build-tools\23.0.2\
+e:
+dx --dex --output=F:\projects\mprojects\DLoad\builddex\dex\plugin.jar F:\projects\mprojects\DLoad\builddex\dloadplugin.jar
+</code></pre>
+
+<blockquote>
+<p>这是批处理文件中内容，根据自己的路径，修改后，执行批处理文件，就会在对应位置生成最终的插件包plugin.jar</p>
+</blockquote>
+<h4>18、测试</h4>
+<blockquote>
+<p>将plugin.jar放入app宿主工程的assets目录下，执行宿主即可</p>
+</blockquote>
+<h2>第二部分：dl框架使用</h2>
+<h3>说明</h3>
+<blockquote>
+<p>学习使用百度插件框架dl，并解析其原理，熟悉demo。具体查看对应工程</p>
+</blockquote>
+<h2>第三部分：AndFix框架使用</h2>
+<h3>说明</h3>
+<blockquote>
+<p>学会使用阿里热修复框架AndFix,熟悉demo，熟悉热修复流程。具体查看对应工程</p>
+</blockquote>
+
+</TD>
+	</TR>
+</TABLE>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
